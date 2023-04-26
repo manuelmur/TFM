@@ -1,14 +1,13 @@
 import asyncio
-from bleak import discover
+from bleak import BleakScanner
 
-async def run():
+async def main():
     # Escanear dispositivos BLE cercanos durante 10 segundos
-    devices = await discover(timeout=10)
+    devices = await BleakScanner.discover(timeout=10)
 
     # Imprimir información de los dispositivos encontrados
     for device in devices:
         print("Dispositivo encontrado: {0} ({1})".format(device.name, device.address))
 
-# Ejecutar el bucle principal de eventos de asyncio
-loop = asyncio.get_event_loop()
-loop.run_until_complete(run())
+# Ejecutar main
+asyncio.run(main())
