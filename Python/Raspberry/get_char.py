@@ -1,3 +1,5 @@
+# Se conecta al dispositivo con la MAC indicada e imprime el UUID del servicio y caracteristicas disponibles
+
 import asyncio
 from bleak import BleakClient
 
