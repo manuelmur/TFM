@@ -1,3 +1,4 @@
+# Busca dispositivos BLE y los imprime
 import asyncio
 from bleak import BleakScanner
 
