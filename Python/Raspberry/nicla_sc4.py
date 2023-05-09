@@ -1,3 +1,6 @@
+# Codigo para suscribirse a la caracteristica y recibir el dato cuando cambie
+# Hay que ejecutarlo varias veces hasta que consigue conectar
+
 import struct
 import asyncio
 import logging
