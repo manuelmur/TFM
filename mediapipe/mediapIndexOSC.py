@@ -2,11 +2,16 @@
 import cv2
 import time
 import mediapipe as mp
+from pythonosc import osc_message_builder
+from pythonosc import udp_client
 
 num12 = 0.0
 num0 = 0.0
-num9 = 0.0
 closed = False
+
+# Set up the OSC client
+sender = udp_client.SimpleUDPClient("127.0.0.1", 57120)
+
 # Grabbing the Hand Model from Mediapipe and
 # Initializing the Model
 mp_hand = mp.solutions.hands
@@ -65,20 +70,22 @@ while capture.isOpened():
 				num0 = landmark.y
 			if num0-num12 < 0.3:
 				if closed==False:
-					print(1)
+					print("Enviando 1")
+					sender.send_message("/estado", int(1))
 				closed = True
 			else:
 				if closed:
-					print(0)
+					print("Enviando 0")
+					sender.send_message("/estado", int(0))
 				closed = False
 			if id==9 :
 				num9 = landmark.y
 				if num9 > 0.7:
-					print(1)
+					sender.send_message("/estado", int(2))
 				elif num9 > 0.4:
-					print(2)
+					sender.send_message("/estado", int(3))
 				else:
-					print(3)
+					sender.send_message("/estado", int(4))
 
 	# Calculating the FPS
 	currentTime = time.time()
