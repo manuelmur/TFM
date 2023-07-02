@@ -70,22 +70,39 @@ while capture.isOpened():
 				num0 = landmark.y
 			if num0-num12 < 0.3:
 				if closed==False:
-					print("Enviando 1")
+					#print("Enviando 1")
 					sender.send_message("/estado", int(1))
 				closed = True
 			else:
 				if closed:
-					print("Enviando 0")
+					#print("Enviando 0")
 					sender.send_message("/estado", int(0))
 				closed = False
 			if id==9 :
-				num9 = landmark.y
-				if num9 > 0.7:
+				num9y = landmark.y
+				num9x = landmark.x
+
+				if num9y > 0.8:
 					sender.send_message("/estado", int(2))
-				elif num9 > 0.4:
+				elif num9y > 0.6:
 					sender.send_message("/estado", int(3))
-				else:
+				elif num9y > 0.4:
 					sender.send_message("/estado", int(4))
+				elif num9y > 0.2:
+					sender.send_message("/estado", int(5))
+				else:
+					sender.send_message("/estado", int(6))
+					
+				if num9x > 0.8:
+					sender.send_message("/estado", int(7))
+				elif num9x > 0.6:
+					sender.send_message("/estado", int(8))
+				elif num9x > 0.4:
+					sender.send_message("/estado", int(9))
+				elif num9x > 0.2:
+					sender.send_message("/estado", int(10))
+				else:
+					sender.send_message("/estado", int(11))
 
 	# Calculating the FPS
 	currentTime = time.time()

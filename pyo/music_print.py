@@ -8,6 +8,7 @@ def printnum(address, *args):
 	print(address)
 	print(number)
     
-r = OscDataReceive(57120, "/number", printnum)
+#r = OscDataReceive(57120, "/number", printnum)
+r = OscDataReceive(57120, "/amp", printnum)
 
 s.gui(locals())

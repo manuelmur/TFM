@@ -4,7 +4,7 @@ import asyncio
 from bleak import BleakClient
 
 # Dirección MAC de la placa Nicla Sense ME
-DEVICE_ADDRESS = "90:01:71:96:EC:D3"
+DEVICE_ADDRESS = "94:3C:C6:CD:E8:62"
 
 async def run():
     # Conectarse a la placa Nicla Sense ME
