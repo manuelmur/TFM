@@ -12,7 +12,7 @@ freq = Sig(440)
 
 def procesarestado(address, *args):
 	number = args[0]
-	#print(number)
+	print(number)
 	if number==1:
 		a.mul = 0
 		print("Muteado")
@@ -30,11 +30,6 @@ def procesarestado(address, *args):
 	if number==6:
 		freq.value = 1120
 		
-		
-def procesarpitch(address, *args):
-	number = args[0]
-	print(number)
-	
 
 a = Sine(freq=freq, mul=1).out()
 
