@@ -10,7 +10,7 @@ async def notif_handler(uuid, value: bytearray):
 	int_value = struct.unpack("i", value)[0]
 	print("Dato: ", int(int_value))
 	print("Byte_array: ", value)
-	sender.send_message("/number", int(int_value))
+	sender.send_message("/estado", int(int_value))
 	
 
 async def run(address, service_uuid, char_uuid):

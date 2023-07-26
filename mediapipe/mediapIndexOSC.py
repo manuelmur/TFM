@@ -6,6 +6,8 @@ from pythonosc import osc_message_builder
 from pythonosc import udp_client
 
 num12 = 0.0
+num8 = 0.0
+num5 = 0.0
 num0 = 0.0
 closed = False
 
@@ -61,23 +63,32 @@ while capture.isOpened():
 										mp_hand.HAND_CONNECTIONS
 									)
 		for id, landmark in enumerate(hand_landmark.landmark):
-			#print(id, landmark)
 			if id==12 :
-				#print(id,landmark.y)
 				num12 = landmark.y
+			if id==8 :
+				num8 = landmark.y
+			if id==5 :
+				num5 = landmark.y
 			if id==0 :
-				#print(id,landmark.y)
 				num0 = landmark.y
-			if num0-num12 < 0.3:
-				if closed==False:
-					#print("Enviando 1")
-					sender.send_message("/estado", int(1))
-				closed = True
+			if num0-num5 > 0.18:		
+				if ((num0-num12 < 0.3) and (num0-num8 < 0.3)):
+					if closed==False:
+						sender.send_message("/estado", int(1))
+					closed = True
+				else:
+					if closed:
+						sender.send_message("/estado", int(0))
+					closed = False
 			else:
-				if closed:
-					#print("Enviando 0")
-					sender.send_message("/estado", int(0))
-				closed = False
+				if ((num0-num12 < 0.15) and (num0-num8 < 0.15)):
+					if closed==False:
+						sender.send_message("/estado", int(1))
+					closed = True
+				else:
+					if closed:
+						sender.send_message("/estado", int(0))
+					closed = False
 			if id==9 :
 				num9y = landmark.y
 				num9x = landmark.x
@@ -113,7 +124,7 @@ while capture.isOpened():
 	cv2.putText(image, str(int(fps))+" FPS", (10, 70), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,0), 2)
 
 	# Display the resulting image
-	cv2.imshow("Hand Landmarks", image)
+	cv2.imshow("Hall Musical", image)
 
 	# Enter key 'q' to break the loop
 	if cv2.waitKey(5) & 0xFF == ord('q'):

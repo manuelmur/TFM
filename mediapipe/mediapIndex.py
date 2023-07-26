@@ -6,6 +6,7 @@ import mediapipe as mp
 num12 = 0.0
 num0 = 0.0
 num9 = 0.0
+num5 = 0.0
 closed = False
 # Grabbing the Hand Model from Mediapipe and
 # Initializing the Model
@@ -57,22 +58,37 @@ while capture.isOpened():
 									)
 		for id, landmark in enumerate(hand_landmark.landmark):
 			#print(id, landmark)
+			print(num0-num5)
 			if id==12 :
 				#print(id,landmark.y)
 				num12 = landmark.y
+			if id==5 :
+				#print(id,landmark.y)
+				num5 = landmark.y
 			if id==0 :
 				#print(id,landmark.y)
 				num0 = landmark.y
-			if num0-num12 < 0.3:
-				if closed==False:
-					print(1)
-				closed = True
+			if num0-num5 > 0.18:		
+				if num0-num12 < 0.3:
+					if closed==False:
+						print(1)
+					closed = True
+				else:
+					if closed:
+						print(0)
+					closed = False
 			else:
-				if closed:
-					print(0)
-				closed = False
+				if num0-num12 < 0.15:
+					if closed==False:
+						print(1)
+					closed = True
+				else:
+					if closed:
+						print(0)
+					closed = False
 			if id==9 :
-				num9 = landmark.y
+				num9 = landmark.z
+				print(num9)
 				if num9 > 0.7:
 					print(1)
 				elif num9 > 0.4:
