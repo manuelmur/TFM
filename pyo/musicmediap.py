@@ -8,10 +8,8 @@ def procesarestado(address, *args):
 	number = args[0]
 	#print(number)
 	if number==1:
-		print("Distribucion weibull")
 		pit.setDist('weibull')
 	if number==0:
-		print("Distribucion poisson")
 		pit.setDist('poisson')
 		
 	#Eje Y
@@ -37,6 +35,16 @@ def procesarestado(address, *args):
 		amp.setDur(.6)
 	if number==11:
 		amp.setDur(.25)
+	
+	# Gestos Nicla
+	if number==49:
+		print("recibido gesto 1")
+		out.stop()
+	if number==50:
+		print("recibido gesto 2")
+		out.out()
+	if number==51:
+		print("recibido gesto inconcluso")
 
 s.start()
 wav = SquareTable()
