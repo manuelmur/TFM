@@ -1,5 +1,7 @@
 # TFM Project - Gestural interface for interaction with generative music
 
+This is a project developed by Manuel Muriel Molina as the final master project for the studies in the Internet of Things master's degree in UCM (Universidad Complutense de Madrid).
+
 In this project we have developed an interactive music system controlled by the position of the hand seen by a camera and the gestures made in the air. The position of the hand, detected by the camera and processed with MediaPipe, will allow us to interact with different parameters such as tone, volume or distribution. The gestures we make with the whole hand, detected with the Nicla Sense ME board, allow us to pause the music or resume it.
 
 The music on which we will do this interaction is a piece of generative music, that is, a composition produced in real time in an algorithmic way, according to a specific set of logical control rules. Starting from a generative music code we will be able to change parameters of this code to modify the sound that is generated.
