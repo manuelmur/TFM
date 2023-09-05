@@ -15,3 +15,5 @@ The codes that must be run on the Raspberry Pi for the project to work are the f
  - /ESP_osc/esp_sc_notify.py -> This code connects the Raspberry to the ESP32 via BLE and receives the gestures detected by the Nicla Sense ME.
  - /mediapipe/mediapIndexOSC.py -> This code opens a preview of the camera detecting the position of the hand and creating the gestural interface.
  - /pyo/musicmediap.py -> The last code starts the generative melody and receives the OSC messages from the other scripts making the melody interactive.
+
+Some videos displaying the functionality of this project can be found in the following link: https://drive.google.com/drive/folders/1_9UT8cEXszJINwEwA9QMOgJ64275WEkR?usp=sharing
